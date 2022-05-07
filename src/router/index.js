@@ -16,7 +16,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
   {
-    path: '/baca',
+    path: '/baca/:id',
     name: 'baca',
     component: () => import('../views/BacaView.vue')
   },

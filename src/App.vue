@@ -12,7 +12,7 @@
             <router-link class="nav-link active" to="/">Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/baca">Baca</router-link>
+            <router-link class="nav-link" :to="{name:'baca',params:{id:nomor}}">Baca</router-link>
           </li>
           <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Pilih Surah </a>

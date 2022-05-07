@@ -1,8 +1,10 @@
 <template>
 <!-- list Surat -->
-  <div class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Pilih Surah </a>
-    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+  <div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+    Pilih Surah
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
       <li v-for="chapter in listSurah" :key="chapter.id">
         <a class="dropdown-item" href="#">{{ chapter.name_simple }}</a>
       </li>
@@ -35,7 +37,7 @@ export default {
   methods: {
     getSurah() {
       axios
-        .get(`https://api.quran.com/api/v4/chapters/1?language=id`)
+        .get(`https://api.quran.com/api/v4/chapters/${this.$route.params.id}?language=id`)
         .then((response) => {
           this.surah = response.data.chapter;
           this.artiSurah = this.surah.translated_name;
@@ -46,7 +48,7 @@ export default {
     },
     getAyat() {
       axios
-        .get(`https://api.quran.com/api/v4/quran/verses/uthmani?chapter_number=1`)
+        .get(`https://api.quran.com/api/v4/quran/verses/uthmani?chapter_number=${this.$route.params.id}`)
         .then((response) => {
           this.arrayAyat = response.data.verses;
         })

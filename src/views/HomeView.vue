@@ -5,7 +5,7 @@
         <div class="card-body">
           <h5 class="card-title">{{ chapter.name_simple }}</h5>
           <p class="card-text">{{ chapter.translated_name.name }}</p>
-          <a href="#" class="btn btn-primary">Baca</a>
+          <router-link :to="{ name: 'baca', params: {id: chapter.id }}" class="btn btn-primary">Baca</router-link>
         </div>
       </div>
     </div>
