@@ -9,17 +9,19 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <router-link class="nav-link active" to="/">Home</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Baca</a>
+            <router-link class="nav-link" to="/baca">Baca</router-link>
           </li>
-          <li class="nav-item dropdown">
+          <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Pilih Surah </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li v-for="chapter in listSurah" :key="chapter.id"><a class="dropdown-item" href="#">{{chapter.name_simple}}</a></li>
+              <li v-for="chapter in listSurah" :key="chapter.id">
+                <a class="dropdown-item" href="#">{{ chapter.name_simple }}</a>
+              </li>
             </ul>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li>
@@ -28,18 +30,8 @@
       </div>
     </div>
   </nav>
-  <div v-for="chapter in listSurah" :key="chapter.id" class="row">
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{chapter.name_simple}}</h5>
-          <p class="card-text">{{chapter.translated_name.name}}</p>
-          <a href="#" class="btn btn-primary">Baca</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  
+
+  <router-view />
 </template>
 
 <script>
@@ -53,7 +45,7 @@ export default {
       judul: "",
       arti: "",
       listSurah: ref([]),
-      namaSurah: "",
+      namaSurah: ""
     };
   },
 
