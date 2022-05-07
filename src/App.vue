@@ -1,51 +1,24 @@
 <template>
-  <!-- NavBar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Mushaf Kita</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <router-link class="nav-link active" to="/">Home</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" :to="{name:'baca',params:{id:nomor}}">Baca</router-link>
-          </li>
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Pilih Surah </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li v-for="chapter in listSurah" :key="chapter.id">
-                <a class="dropdown-item" href="#">{{ chapter.name_simple }}</a>
-              </li>
-            </ul>
-          </li> -->
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-          <input v-model="nomor" type="search" placeholder="1-114" class="" aria-label="Search" />
-        </ul>
-      </div>
-    </div>
-  </nav>
-
+  <NavBar/>
   <router-view />
 </template>
 
 <script>
-import { ref, watch } from "vue";
+import { ref } from "vue";
 import axios from "axios";
+import NavBar from "../../uts/src/components/NavBar.vue";
 
 export default {
+  components: {
+    NavBar
+  },
   data() {
     return {
       nomor: "1",
       judul: "",
       arti: "",
       listSurah: ref([]),
-      namaSurah: ""
+      namaSurah: "",
     };
   },
 

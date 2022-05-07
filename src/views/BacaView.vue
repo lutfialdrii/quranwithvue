@@ -6,7 +6,7 @@
     </a>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
       <li v-for="chapter in listSurah" :key="chapter.id">
-        <a class="dropdown-item" href="#">{{ chapter.name_simple }}</a>
+        <router-link class="dropdown-item" :to="{name:'baca',params:{id:chapter.id}}">{{ chapter.name_simple }}</router-link>
       </li>
     </ul>
   </div>
