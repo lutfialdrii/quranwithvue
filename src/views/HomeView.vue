@@ -1,4 +1,13 @@
 <template>
+
+  <!-- JumboTron -->
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container text-center">
+      <h1 class="mt-5 display-4 fw-bolder">Mushaf Kita</h1>
+      <p class="lead">Mudah beribadah dimana saja!</p>
+    </div>
+  </div>
+  
   <!-- container searchbox -->
   <div class="container">
     <div class="row align-item-center justify-content-center">
@@ -7,9 +16,11 @@
       </form>
     </div>
   </div>
+
+  <!-- Card Surah -->
   <div class="content-surah mx-5">
     <div class="row">
-      <div class="col-xl-3 col-sm-6 col-12 p-1" v-for="(chapter,index) in filterSurah" :key="index">
+      <div class="col-xl-3 col-sm-6 col-12 p-1" v-for="(chapter, index) in filterSurah" :key="index">
         <div class="card mx-3 my-3">
           <div class="card-content">
             <div class="card-body">
@@ -39,7 +50,7 @@ export default {
       arti: "",
       listSurah: ref([]),
       namaSurah: "",
-      search: ""
+      search: "",
     };
   },
 
@@ -78,16 +89,12 @@ export default {
     },
   },
   computed: {
-    filterSurah: function() {
-      return this.listSurah.filter(listSurah => {
-        return listSurah.name_simple
-          .toLowerCase()
-          .split("-")
-          .join(" ")
-          .match(this.search);
+    filterSurah: function () {
+      return this.listSurah.filter((listSurah) => {
+        return listSurah.name_simple.toLowerCase().split("-").join(" ").match(this.search);
       });
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
