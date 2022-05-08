@@ -1,10 +1,12 @@
 <template>
-  <!-- <audio controls src="Alafasy/mp3/002001.mp3">
-    Your browser does not support the
-    <code>audio</code> element.
-  </audio> -->
   <NavBar />
   <router-view />
+
+  <!-- footer -->
+  <div class="text-light text-center p-3 bg-primary">
+    Made with ❤ by 
+    <a class="text-light" href="https://github.com/lutfialdrii">Lutfi Aldri Permana</a>
+  </div>
 </template>
 
 <script>

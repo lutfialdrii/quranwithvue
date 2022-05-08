@@ -2,6 +2,7 @@
   <!-- JumboTron -->
   <div class="jumbotron jumbotron-fluid">
     <div class="container text-center">
+      <br>
       <h1 class="mt-5 display-4 fw-bolder">{{ surah.name_simple }}</h1>
       <p class="lead mb-5">{{ artiSurah.name }}</p>
     </div>

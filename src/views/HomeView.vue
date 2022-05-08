@@ -1,8 +1,9 @@
 <template>
 
   <!-- JumboTron -->
-  <div class="jumbotron jumbotron-fluid">
+  <div class="jumbotron jumbotron-fluid mt-5">
     <div class="container text-center">
+      <br>
       <h1 class="mt-5 display-4 fw-bolder">Mushaf Kita</h1>
       <p class="lead">Mudah beribadah dimana saja!</p>
     </div>
