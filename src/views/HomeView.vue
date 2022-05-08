@@ -1,11 +1,20 @@
 <template>
-  <div v-for="chapter in listSurah" :key="chapter.id" class="row">
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{ chapter.name_simple }}</h5>
-          <p class="card-text">{{ chapter.translated_name.name }}</p>
-          <router-link :to="{ name: 'baca', params: {id: chapter.id }}" class="btn btn-primary">Baca</router-link>
+  <div class="content-surah mx-5">
+    <div class="row">
+      <div class="col-xl-3 col-sm-6 col-12 p-1" v-for="chapter in listSurah" :key="chapter.id">
+        <div class="card mx-3 my-3">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body m-auto text-center">
+                  <h5 class="card-title">{{ chapter.name_simple }}</h5>
+                  <p class="card-text">{{ chapter.translated_name.name }}</p>
+                  <router-link :to="{ name: 'baca', params: { id: chapter.id } }" class="btn btn-primary">Baca
+                  </router-link>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -62,3 +71,9 @@ export default {
   },
 };
 </script>
+<style scoped>
+  .card {
+    border-radius: 20pt;
+  }  
+</style>>
+

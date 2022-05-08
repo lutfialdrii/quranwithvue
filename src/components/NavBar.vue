@@ -13,9 +13,17 @@
           <li class="nav-item">
             <router-link class="nav-link" :to="{ name: 'baca', params: { id: nomor } }">Baca</router-link>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
+
+          <!-- list Surat -->
+          <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> Pilih Surah </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <li v-for="chapter in listSurah" :key="chapter.id">
+                <router-link class="dropdown-item" :to="{ name: 'baca', params: { id: chapter.id } }">{{ chapter.name_simple }}</router-link>
+              </li>
+            </ul>
+          </div>
+          
           <input v-model="nomor" type="search" placeholder="1-114" class="" aria-label="Search" />
         </ul>
       </div>
@@ -34,7 +42,7 @@ export default {
       judul: "",
       arti: "",
       listSurah: ref([]),
-      namaSurah: ""
+      namaSurah: "",
     };
   },
 

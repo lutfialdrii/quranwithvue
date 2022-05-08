@@ -1,25 +1,19 @@
 <template>
-  <!-- list Surat -->
-  <div class="dropdown">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> Pilih Surah </a>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <li v-for="chapter in listSurah" :key="chapter.id">
-        <router-link class="dropdown-item" :to="{ name: 'baca', params: { id: chapter.id } }">{{ chapter.name_simple }}</router-link>
-      </li>
-    </ul>
-  </div>
-  <h3>{{ surah.name_simple }}</h3>
-  <h4>{{ artiSurah.name }}</h4>
+  <h2 class="">{{ surah.name_simple }}</h2>
+  <h4 class="">{{ artiSurah.name }}</h4>
 
   <!-- Tampilkan Ayat & Terjemah -->
-  <div v-for="(ayat,index) in arrayAyat" :key="index" class="card">
-    <div class="card-body">
-      <h5 class="card-title">{{index+1}}{{ ayat.text_uthmani}}</h5>
-      <p class="card-text">Artinya :</p>
-      <p v-html="arrayTerjemahAyat[index].text"></p>
+  <div v-for="(ayat, index) in arrayAyat" :key="index" class="card">
+    <div class="card-body text-end">
+      <h5 class="card-title ayat d-inline text-end">( {{ index + 1 }} )</h5>
+      <h5 class="card-title nomorAyat d-inline display-5 align-right">{{ ayat.text_uthmani }}</h5>
+      <br />
+      <div class="mt-3">
+        <p class="card-text mt-3 d-inline"><strong> Artinya : </strong></p>
+        <p class="card-text mt-3 artiAyat d-inline" v-html="arrayTerjemahAyat[index].text"></p>
+      </div>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -32,7 +26,7 @@ export default {
       artiSurah: "",
       arrayAyat: ref([]),
       arrayTerjemahAyat: ref([]),
-      listSurah: ref([])
+      listSurah: ref([]),
     };
   },
   mounted() {
@@ -75,14 +69,18 @@ export default {
     },
     getTerjemahAyat() {
       axios
-      .get(`https://api.quran.com/api/v4/quran/translations/134?chapter_number=${this.$route.params.id}`)
-      .then((response) => {
-        this.arrayTerjemahAyat = response.data.translations;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    }
+        .get(`https://api.quran.com/api/v4/quran/translations/33?chapter_number=${this.$route.params.id}`)
+        .then((response) => {
+          this.arrayTerjemahAyat = response.data.translations;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>
+
+<style scoped>
+@import "../assets/style.css";
+</style>
