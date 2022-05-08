@@ -1,20 +1,25 @@
 <template>
-<!-- list Surat -->
+  <!-- list Surat -->
   <div class="dropdown">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-    Pilih Surah
-    </a>
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> Pilih Surah </a>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
       <li v-for="chapter in listSurah" :key="chapter.id">
-        <router-link class="dropdown-item" :to="{name:'baca',params:{id:chapter.id}}">{{ chapter.name_simple }}</router-link>
+        <router-link class="dropdown-item" :to="{ name: 'baca', params: { id: chapter.id } }">{{ chapter.name_simple }}</router-link>
       </li>
     </ul>
   </div>
   <h3>{{ surah.name_simple }}</h3>
   <h4>{{ artiSurah.name }}</h4>
-  <p v-for="ayat in arrayAyat" :key="ayat.id">
-    <strong>{{ ayat.text_uthmani }}</strong>
-  </p>
+
+  <!-- Tampilkan Ayat & Terjemah -->
+  <div v-for="(ayat,index) in arrayAyat" :key="index" class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{index+1}}{{ ayat.text_uthmani}}</h5>
+      <p class="card-text">Artinya :</p>
+      <p v-html="arrayTerjemahAyat[index].text"></p>
+    </div>
+  </div>
+
 </template>
 
 <script>
@@ -26,6 +31,7 @@ export default {
       surah: "",
       artiSurah: "",
       arrayAyat: ref([]),
+      arrayTerjemahAyat: ref([]),
       listSurah: ref([])
     };
   },
@@ -33,6 +39,7 @@ export default {
     this.getAyat();
     this.getSurah();
     this.getListSurah();
+    this.getTerjemahAyat();
   },
   methods: {
     getSurah() {
@@ -66,6 +73,16 @@ export default {
           console.log(error);
         });
     },
+    getTerjemahAyat() {
+      axios
+      .get(`https://api.quran.com/api/v4/quran/translations/134?chapter_number=${this.$route.params.id}`)
+      .then((response) => {
+        this.arrayTerjemahAyat = response.data.translations;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }
   },
 };
 </script>
